@@ -71,12 +71,12 @@ Before we compute the average of segments we can remove any outliers. Outlier se
 
 Running this improved pipeline we get a better video result as one would expect
 
-Video: [Yellow Line on the Leff Exluding Outliera](test_videos_output/solidYellowLeftAveragedNoOutliers.mp4)  
+Video: [Yellow Line on the Left Excluding Outliers](test_videos_output/solidYellowLeftAveragedNoOutliers.mp4)  
 
 
 ### 3. Suggest possible improvements to your pipeline
 
-We still have some time where the lines disappear. This can be solved by using a weighted sum of the lines already shown where the weights fade off as time passes.
+We still have instances in the video where the lines disappear. This can be solved by using a weighted sum of the lines already shown where the weights fade off as time passes.
 
 We could also have improvements by defining a range for the potential angles these lines can take, this would exclude any artifacts, shadows or other road markings. 
 
