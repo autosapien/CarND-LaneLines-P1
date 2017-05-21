@@ -20,11 +20,11 @@ The goals / steps of this project are the following:
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
-As a first attempt we created a pipeline that use the image and applied transforms to it (why these are used is explained below)
+As a first attempt we created a pipeline of transforms that uses an image of the road from the drivers perspective as input and applies transforms to it (detailaed explanation after the images)
  
   greyscale -> gaussian blur -> canny edge detector -> select region of interest -> hough transform
   
-The transformed image is then superimposed with some alpha on the original image to generate the output. Here are some examples
+The transformed image is then superimposed onto the original image to generate the output that shows what road lines were identified by the system. Here are some examples
 
 ![Hough](static/hough.png)  
   
@@ -36,8 +36,8 @@ The transformed image is then superimposed with some alpha on the original image
 
 Running the pipeline on videos we get decent results
 
-![White Line with Hough](test_videos_output/solidWhiteRight.mp4)
-![Yellow Line with Hough](test_videos_output/solidYellowLeft.mp4)  
+[White Line on the Right](test_videos_output/solidWhiteRight.mp4)
+[Yellow Line on the Left](test_videos_output/solidYellowLeft.mp4)  
 
 This looks pretty good, it would be great if we could have lines with a fixed length that are longer and are more consistent than in these videos.
 
@@ -46,7 +46,7 @@ Given n line segments we can compute their average slope and their average cente
 ![Hough With Averaging](static/hough_with_averaging.png)  
 
 Running this on the video we get
-![Yellow Line with Hough With Averaging](test_videos_output/solidYellowLeftAveraged.mp4)  
+[Yellow Line on the Left with Averaging](test_videos_output/solidYellowLeftAveraged.mp4)  
 
 Pretty Good!
 
@@ -69,7 +69,7 @@ Before we compute the average of segments we can remove any outliers. Outlier se
 
 Running this improved pipeline we get a better video result as one would expect
 
-![Yellow Line Excluding Outliers](test_videos_output/solidYellowLeftAveragedNoOutliers.mp4)  
+[Yellow Line on the Leff Exluding Outliera](test_videos_output/solidYellowLeftAveragedNoOutliers.mp4)  
 
 
 ### 3. Suggest possible improvements to your pipeline
