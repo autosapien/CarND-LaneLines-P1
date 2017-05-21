@@ -20,24 +20,25 @@ The goals / steps of this project are the following:
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
-As a first attempt we created a pipeline of transforms that uses an image of the road from the drivers perspective as input and applies transforms to it (detailaed explanation after the images)
+As a first attempt we created a pipeline of transforms that uses an image of the road from the drivers perspective as input. It applies the following transforms to the image (detailed explanation after the images)
  
   greyscale -> gaussian blur -> canny edge detector -> select region of interest -> hough transform
   
-The transformed image is then superimposed onto the original image to generate the output that shows what road lines were identified by the system. Here are some examples
+The transformed image is then superimposed onto the original image to generate the output that shows the road lines were identified by the system. Here are some examples
 
 ![Hough](static/hough.png)  
   
 1. Greyscale- Color information does not add any value for the white / yellow lines in the source images
-2. Gaussian Blur- This removes any minor contrasts in adjoining areas and leaves only where the contrast between adjacent areas is high (like in road lines)
-3. Canny edge detector- Find edges in the image
-4. Select region of interest- We find artifacts with edges all over the image, we are interested only in the lines on the road in front of the vehicle
+2. Gaussian Blur- This removes any minor contrasts in adjoining areas and leaves areas where the contrast between adjacent pixels is high (like in road lines)
+3. Canny edge detector- Finds edges in the image
+4. Select region of interest- We find artifacts with edges all over the image. This reduces the scope of interest to area in front of the vehicle where the road lines are 
 5. Hough transform- Finds segments of lines in the region of interest in the image
 
 Running the pipeline on videos we get decent results
 
-[White Line on the Right](test_videos_output/solidWhiteRight.mp4)
-[Yellow Line on the Left](test_videos_output/solidYellowLeft.mp4)  
+Video: [White Line on the Right](test_videos_output/solidWhiteRight.mp4)
+
+Video: [Yellow Line on the Left](test_videos_output/solidYellowLeft.mp4)  
 
 This looks pretty good, it would be great if we could have lines with a fixed length that are longer and are more consistent than in these videos.
 
@@ -46,7 +47,8 @@ Given n line segments we can compute their average slope and their average cente
 ![Hough With Averaging](static/hough_with_averaging.png)  
 
 Running this on the video we get
-[Yellow Line on the Left with Averaging](test_videos_output/solidYellowLeftAveraged.mp4)  
+
+Video: [Yellow Line on the Left with Averaging](test_videos_output/solidYellowLeftAveraged.mp4)  
 
 Pretty Good!
 
@@ -69,7 +71,7 @@ Before we compute the average of segments we can remove any outliers. Outlier se
 
 Running this improved pipeline we get a better video result as one would expect
 
-[Yellow Line on the Leff Exluding Outliera](test_videos_output/solidYellowLeftAveragedNoOutliers.mp4)  
+Video: [Yellow Line on the Leff Exluding Outliera](test_videos_output/solidYellowLeftAveragedNoOutliers.mp4)  
 
 
 ### 3. Suggest possible improvements to your pipeline
